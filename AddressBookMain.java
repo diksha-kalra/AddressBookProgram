@@ -15,8 +15,9 @@ public class AddressBookMain{
 		System.out.println("Welcome To Address Book Program");
 		// while loop to take inputs from person
 		while(true) {
-			System.out.println("Enter 1 for add details");
+			System.out.println("Enter 1 to add details");
 			System.out.println("Enter 2 for viewing all contact details");
+			System.out.println("Enter 3 to modify details");
 			System.out.println("Enter 0 to exit");
 			System.out.println("Enter the action to perform");
 			ch=obj.nextInt();
@@ -53,13 +54,27 @@ public class AddressBookMain{
 				System.out.println("Last Name-"+p.getLast_name());
 				System.out.println("Address-"+p.getAddress());
 				System.out.println("City-"+p.getCity());
-				System.out.println("Statw-"+p.getState());
+				System.out.println("State-"+p.getState());
 				System.out.println("ZIP-"+p.getZip());
 				System.out.println("Phone Number-"+p.getPhno());
 				System.out.println("Email-"+p.getEmail());
 				}
 			}
-			else {
+		else if(ch==3) {
+			
+			System.out.println("Enter the name of person whose contact is to be modified");
+			String name=obj.next();
+			while(true) {
+			System.out.println("1. First name\n 2.Last name\n 3.Address\n 4. City\n 5. State\n 6. Zip\n 7. Phone number\n 8.Email\n 0. Exit");
+			System.out.println("Enter the info to be modified");
+			int info_name=obj.nextInt();
+			add.Modify(name,info_name);
+			if(info_name==0) {
+				break;
+			}
+		}
+		}
+		else {
 				break;
 			}
 		}
