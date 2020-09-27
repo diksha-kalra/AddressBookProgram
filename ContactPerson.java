@@ -32,7 +32,7 @@ import java.util.*;
 	//Method to modify details
      	public void Modify(String name,int info_name){
     		for(int i = 0; i < person.size(); i++){
-             	PersonInfo p = (PersonInfo)person.get(i); 
+             	PersonInfo p = (PersonInfo)person.get(i);
              	if(name.equals(p.getFirst_name())){
             		System.out.println("Modify Details");
             	 	switch(info_name) {
@@ -70,7 +70,17 @@ import java.util.*;
            				break;
             	   }	
              }
-      } 
-	
+      } 	
 }
+     	//Method to remove contact details
+    	public void remove(String name){
+            for(int i = 0; i < person.size(); i++){
+            	PersonInfo p = (PersonInfo)person.get(i); 
+            	if(name.equals(p.getFirst_name())){
+            		person.remove(i);
+            		System.out.println("Details of "+name+" removed");
+            	}
+               }
+    		}
+
 }

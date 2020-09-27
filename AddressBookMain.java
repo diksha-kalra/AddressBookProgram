@@ -18,6 +18,7 @@ public class AddressBookMain{
 			System.out.println("Enter 1 to add details");
 			System.out.println("Enter 2 for viewing all contact details");
 			System.out.println("Enter 3 to modify details");
+			System.out.println("Enter 4 to delete details of a person");
 			System.out.println("Enter 0 to exit");
 			System.out.println("Enter the action to perform");
 			ch=obj.nextInt();
@@ -61,7 +62,12 @@ public class AddressBookMain{
 				}
 			}
 		else if(ch==3) {
-			
+			ArrayList<PersonInfo> result = add.viewAllContacts();
+			if(result.isEmpty()) {
+				System.out.println("List is empty");
+				continue;
+			}
+			else {
 			System.out.println("Enter the name of person whose contact is to be modified");
 			String name=obj.next();
 			while(true) {
@@ -73,6 +79,12 @@ public class AddressBookMain{
 				break;
 			}
 		}
+		}
+		}
+		else if(ch==4) {
+			System.out.println("Enter the name of person whose contact is to be deleted");
+			String name=obj.next();
+			add.remove(name);
 		}
 		else {
 				break;
