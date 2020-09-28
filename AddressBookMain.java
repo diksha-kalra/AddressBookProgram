@@ -5,9 +5,10 @@ import java.util.*;
 public class AddressBookMain{
 	
 	public static void main(String[] args) {
+		
 		Scanner obj = new Scanner(System.in);
 		
-		//Creating object of contactperson class
+		//Creating object of contact person class
 		ContactPerson add = new ContactPerson();
 		int ch=0;
 		
@@ -86,7 +87,9 @@ public class AddressBookMain{
 			String name=obj.next();
 			add.remove(name);
 		}
-		else {
+		else {	
+				
+		
 				break;
 			}
 		}

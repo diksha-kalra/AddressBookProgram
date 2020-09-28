@@ -4,6 +4,8 @@ import java.util.*;
 	public class ContactPerson {
 		Scanner obj=new Scanner(System.in);
 	// Array list to store contact person details
+	
+		
 	private ArrayList<PersonInfo> person=new ArrayList<PersonInfo>();
 		
 	public void setPerson(ArrayList<PersonInfo> person) {
