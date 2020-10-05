@@ -19,7 +19,7 @@ public class AddressBookMain {
 				System.out.println("Enter the Address Book Name");
 				String add_book_name = obj.next();
 				ContactPerson contactPerson = new ContactPerson();
-				address.addAddressBook(add_book_name,contactPerson);
+				address.addAddressBook(add_book_name, contactPerson);
 				while (true) {
 					System.out.println("Enter 1 to add details");
 					System.out.println("Enter 2 for viewing all contact details");
@@ -29,22 +29,24 @@ public class AddressBookMain {
 					System.out.println("Enter the action to perform");
 					int ch = obj.nextInt();
 					if (ch == 1) {
-						contactPerson.addPerson();
+						while (true) {
+							System.out.println("Enter the name of person whose conatct you need to add");
+							String name = obj.next();
+							boolean flag = contactPerson.duplicateCheck(name);
+							if (flag == true) {
+								System.out.println("Contact with this name exist give another name");
+								continue;
+							} else {
+								contactPerson.addPerson();
+								break;
+							}
+						}
 					} else if (ch == 2) {
 						contactPerson.viewAllContacts();
 					} else if (ch == 3) {
 						System.out.println("Enter the name of person whose contact is to be modified");
 						String name = obj.next();
-						while (true) {
-							System.out.println(
-									"1. First name\n 2.Last name\n 3.Address\n 4. City\n 5. State\n 6. Zip\n 7. Phone number\n 8.Email\n 0. Exit");
-							System.out.println("Enter the info to be modified");
-							int info_name = obj.nextInt();
-							contactPerson.Modify(name, info_name);
-							if (info_name == 0) {
-								break;
-							}
-						}
+						contactPerson.Modify(name);
 					} else if (ch == 4) {
 						System.out.println("Enter the name of person whose contact is to be deleted");
 						String name = obj.next();
@@ -59,5 +61,4 @@ public class AddressBookMain {
 		}
 		obj.close();
 	}
-	
 }
