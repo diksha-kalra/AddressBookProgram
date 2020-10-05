@@ -1,12 +1,10 @@
 package com.addressbook;
 import java.util.*;
 
-	public class ContactPerson {
-		Scanner obj=new Scanner(System.in);
+public class ContactPerson {
+	Scanner obj=new Scanner(System.in);
 	// Array list to store contact person details
-	
-		
-	private ArrayList<PersonInfo> person=new ArrayList<PersonInfo>();
+	private ArrayList<PersonInfo> person=new ArrayList<PersonInfo>();;
 		
 	public void setPerson(ArrayList<PersonInfo> person) {
 		this.person=person;
@@ -17,8 +15,25 @@ import java.util.*;
 	}
 	
 	//Method to add contact person details
-	public void addPerson(PersonInfo pobj ) {
-		person.add(pobj);
+	public void addPerson() {
+		System.out.println("Enter First Name");
+		String fname=obj.next();
+		System.out.println("Enter Last Name");
+		String lname=obj.next();
+		System.out.println("Enter Address");
+		String address = obj.next();
+		System.out.println("Enter City");
+		String city=obj.next();
+		System.out.println("Enter State");
+		String state=obj.next();
+		System.out.println("Enter Zip Code");
+		String zipCode=obj.next();
+		System.out.println("Enter Phone Number");
+		String phoneNo=obj.next();
+		System.out.println("Enter Email");
+		String email=obj.next();
+		PersonInfo p=new PersonInfo(fname,lname,address,city,state,zipCode,phoneNo,email);
+		person.add(p);
 	}
 	
 	//Method to check if list is empty
@@ -28,8 +43,25 @@ import java.util.*;
 	
 	//Method to check all contacts available 
 	public ArrayList<PersonInfo> viewAllContacts(){
+		//ArrayList<PersonInfo> result = add.viewAllContacts();
+		if(person.isEmpty()) {
+			System.out.println("List is empty");
+		}
+		Iterator<PersonInfo> iter=person.iterator();
+		while(iter.hasNext()) {
+			PersonInfo p1=(PersonInfo)iter.next();
+			//System.out.println("Address Book Name"+add_book_name);
+			System.out.println("First Name-"+p1.getFirst_name());
+			System.out.println("Last Name-"+p1.getLast_name());
+			System.out.println("Address-"+p1.getAddress());
+			System.out.println("City-"+p1.getCity());
+			System.out.println("State-"+p1.getState());
+			System.out.println("ZIP-"+p1.getZip());
+			System.out.println("Phone Number-"+p1.getPhno());
+			System.out.println("Email-"+p1.getEmail());
+			}
 		return person;
-	}	
+	}
 	
 	//Method to modify details
      	public void Modify(String name,int info_name){

@@ -1,18 +1,21 @@
 package com.addressbook;
+
 import java.util.*;
 
 public class AddressBookDict {
-	private TreeMap<String, PersonInfo> addressBook=new TreeMap<String, PersonInfo>();
-	public TreeMap<String, PersonInfo> getAddressBookDict(){
+
+	private TreeMap<String, ContactPerson> addressBook = new TreeMap<String, ContactPerson>();
+
+	public TreeMap<String, ContactPerson> getAddressBookDict() {
 		return addressBook;
 	}
-	public void setAddressBookDict(TreeMap<String, PersonInfo> addressBook){
-		this.addressBook=addressBook;
-	}
-	
-	public void addAddressBook(String AddressBookName,PersonInfo obj) {
-		addressBook.put(AddressBookName,obj);
-	}
-	
 
+	public void setAddressBookDict(TreeMap<String, ContactPerson> addressBook) {
+		this.addressBook = addressBook;
+	}
+
+	public void addAddressBook(String AddressBookName, ContactPerson obj) {
+
+		addressBook.put(AddressBookName, obj);
+	}
 }

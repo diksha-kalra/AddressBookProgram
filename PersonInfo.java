@@ -1,6 +1,7 @@
 package com.addressbook;
 
-public class PersonInfo {  
+public class PersonInfo {
+
 	private String first_name;
 	private String last_name;
 	private String address;
@@ -8,54 +9,82 @@ public class PersonInfo {
 	private String state;
 	private String zip;
 	private String phone_no;
-	private String email;  
-	
-public String getFirst_name() {
+	private String email;
+
+	public PersonInfo(String first_name, String last_name, String address, String city, String state, String zip,
+			String phone_no, String email) {
+		super();
+		this.first_name = first_name;
+		this.last_name = last_name;
+		this.address = address;
+		this.city = city;
+		this.state = state;
+		this.zip = zip;
+		this.phone_no = phone_no;
+		this.email = email;
+	}
+
+	public String getFirst_name() {
 		return first_name;
 	}
-public void setFirst_name(String first_name) {
-		this.first_name=first_name;
+
+	public void setFirst_name(String first_name) {
+		this.first_name = first_name;
 	}
-public String getLast_name() {
+
+	public String getLast_name() {
 		return last_name;
 	}
-public void setLast_name(String last_name) {
-		this.last_name=last_name;
+
+	public void setLast_name(String last_name) {
+		this.last_name = last_name;
 	}
-public String getAddress() {
+
+	public String getAddress() {
 		return address;
 	}
-public void setAddress(String address) {
-		this.address=address;
+
+	public void setAddress(String address) {
+		this.address = address;
 	}
-public String getCity() {
+
+	public String getCity() {
 		return city;
 	}
-public void setCity(String city) {
-		this.city=city;
+
+	public void setCity(String city) {
+		this.city = city;
 	}
-public String getState() {
+
+	public String getState() {
 		return state;
 	}
-public void setState(String state) {
-		this.state=state;
+
+	public void setState(String state) {
+		this.state = state;
 	}
-public String getZip() {
+
+	public String getZip() {
 		return zip;
 	}
-public void setZip(String zip) {
-		this.zip=zip;
+
+	public void setZip(String zip) {
+		this.zip = zip;
 	}
-public String getPhno() {
+
+	public String getPhno() {
 		return phone_no;
 	}
-public void setPhno(String phone_no) {
-		this.phone_no=phone_no;
+
+	public void setPhno(String phone_no) {
+		this.phone_no = phone_no;
 	}
-public String getEmail() {
+
+	public String getEmail() {
 		return email;
 	}
-public void setEmail(String email) {
-		this.email=email;
+
+	public void setEmail(String email) {
+		this.email = email;
 	}
 }
