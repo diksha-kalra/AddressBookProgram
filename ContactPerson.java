@@ -44,7 +44,6 @@ public class ContactPerson {
 
 	// Method to check all contacts available
 	public ArrayList<PersonInfo> viewAllContacts() {
-		// ArrayList<PersonInfo> result = add.viewAllContacts();
 		if (person.isEmpty()) {
 			System.out.println("List is empty");
 		}
@@ -133,6 +132,18 @@ public class ContactPerson {
 		return flag;
 	}
 
+	// method to find people of same city or state
+	public String searchOnBasisOfCity(String cityName) {
+		String flag="false";
+		for (int i = 0; i < person.size(); i++) {
+			PersonInfo p = (PersonInfo) person.get(i);
+			if (cityName.equals(p.getCity()))
+				//System.out.println("Person- " + p.getFirst_name());
+				flag=p.getFirst_name();
+		}
+		return flag;
+	}
+	
 	// Method to remove contact details
 	public void remove(String name) {
 		for (int i = 0; i < person.size(); i++) {

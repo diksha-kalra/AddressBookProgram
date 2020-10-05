@@ -13,6 +13,8 @@ public class AddressBookMain {
 		AddressBookDict address = new AddressBookDict();
 		while (true) {
 			System.out.println("Enter 1 to add addressbook");
+			System.out.println("Enter 2 to display address book");
+			System.out.println("Enter 3 to display person across address book on basis of city");
 			System.out.println("Enter 0 to exit");
 			int ch1 = obj.nextInt();
 			if (ch1 == 1) {
@@ -25,6 +27,7 @@ public class AddressBookMain {
 					System.out.println("Enter 2 for viewing all contact details");
 					System.out.println("Enter 3 to modify details");
 					System.out.println("Enter 4 to delete details of a person");
+					System.out.println("Enter 5 to get person in same city");
 					System.out.println("Enter 0 to exit");
 					System.out.println("Enter the action to perform");
 					int ch = obj.nextInt();
@@ -51,11 +54,20 @@ public class AddressBookMain {
 						System.out.println("Enter the name of person whose contact is to be deleted");
 						String name = obj.next();
 						contactPerson.remove(name);
+					} else if (ch == 5) {
+						System.out.println("Enter the city name");
+						String cityName = obj.next();
+						contactPerson.searchOnBasisOfCity(cityName);
 					} else {
 						break;
 					}
 				}
-			} else {
+			} else if (ch1 == 2) {
+				address.viewAddressBook();
+			}else if(ch1==3) {
+				address.SearchAddressBook();
+			}
+			else {
 				break;
 			}
 		}
