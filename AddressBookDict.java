@@ -33,9 +33,15 @@ public class AddressBookDict {
 		}
 		System.out.println("Enter the city name");
 		String cityName = obj.next();
+		System.out.println("Enter the state name");
+		String stateName = obj.next();
 		for (Map.Entry<String, ContactPerson> entry : addressBook.entrySet()) {
 			System.out.println("address book name- " + entry.getKey());
-			System.out.println("person name- " + entry.getValue().searchOnBasisOfCity(cityName));
+			System.out.println("person name on basis of city - " + entry.getValue().searchOnBasisOfCity(cityName));
+		}
+		for (Map.Entry<String, ContactPerson> entry : addressBook.entrySet()) {
+			System.out.println("address book name- " + entry.getKey());
+			System.out.println("person name on basis of state- " + entry.getValue().searchOnBasisOfState(stateName));
 		}
 	}
 }

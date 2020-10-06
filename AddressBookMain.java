@@ -14,7 +14,7 @@ public class AddressBookMain {
 		while (true) {
 			System.out.println("Enter 1 to add addressbook");
 			System.out.println("Enter 2 to display address book");
-			System.out.println("Enter 3 to display person across address book on basis of city");
+			System.out.println("Enter 3 to display person across address book on basis of city and state");
 			System.out.println("Enter 0 to exit");
 			int ch1 = obj.nextInt();
 			if (ch1 == 1) {
@@ -27,7 +27,8 @@ public class AddressBookMain {
 					System.out.println("Enter 2 for viewing all contact details");
 					System.out.println("Enter 3 to modify details");
 					System.out.println("Enter 4 to delete details of a person");
-					System.out.println("Enter 5 to get person in same city");
+					System.out.println("Enter 5 to get persons of same city");
+					System.out.println("Enter 6 to get persons of same state");
 					System.out.println("Enter 0 to exit");
 					System.out.println("Enter the action to perform");
 					int ch = obj.nextInt();
@@ -58,16 +59,19 @@ public class AddressBookMain {
 						System.out.println("Enter the city name");
 						String cityName = obj.next();
 						contactPerson.searchOnBasisOfCity(cityName);
+					} else if (ch == 6) {
+						System.out.println("Enter the state name");
+						String stateName = obj.next();
+						contactPerson.searchOnBasisOfState(stateName);
 					} else {
 						break;
 					}
 				}
 			} else if (ch1 == 2) {
 				address.viewAddressBook();
-			}else if(ch1==3) {
+			} else if (ch1 == 3) {
 				address.SearchAddressBook();
-			}
-			else {
+			} else {
 				break;
 			}
 		}

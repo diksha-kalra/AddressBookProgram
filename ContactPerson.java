@@ -134,16 +134,25 @@ public class ContactPerson {
 
 	// method to find people of same city or state
 	public String searchOnBasisOfCity(String cityName) {
-		String flag="false";
+		String flag = "false";
 		for (int i = 0; i < person.size(); i++) {
 			PersonInfo p = (PersonInfo) person.get(i);
 			if (cityName.equals(p.getCity()))
-				//System.out.println("Person- " + p.getFirst_name());
-				flag=p.getFirst_name();
+				flag = p.getFirst_name();
 		}
 		return flag;
 	}
 	
+	public String searchOnBasisOfState(String stateName) {
+		String flag = "false";
+		for (int i = 0; i < person.size(); i++) {
+			PersonInfo p = (PersonInfo) person.get(i);
+			if (stateName.equals(p.getState()))
+				flag = p.getFirst_name();
+		}
+		return flag;
+	}
+
 	// Method to remove contact details
 	public void remove(String name) {
 		for (int i = 0; i < person.size(); i++) {
