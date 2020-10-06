@@ -27,8 +27,6 @@ public class AddressBookMain {
 					System.out.println("Enter 2 for viewing all contact details");
 					System.out.println("Enter 3 to modify details");
 					System.out.println("Enter 4 to delete details of a person");
-					System.out.println("Enter 5 to get persons of same city");
-					System.out.println("Enter 6 to get persons of same state");
 					System.out.println("Enter 0 to exit");
 					System.out.println("Enter the action to perform");
 					int ch = obj.nextInt();
@@ -55,14 +53,6 @@ public class AddressBookMain {
 						System.out.println("Enter the name of person whose contact is to be deleted");
 						String name = obj.next();
 						contactPerson.remove(name);
-					} else if (ch == 5) {
-						System.out.println("Enter the city name");
-						String cityName = obj.next();
-						contactPerson.searchOnBasisOfCity(cityName);
-					} else if (ch == 6) {
-						System.out.println("Enter the state name");
-						String stateName = obj.next();
-						contactPerson.searchOnBasisOfState(stateName);
 					} else {
 						break;
 					}

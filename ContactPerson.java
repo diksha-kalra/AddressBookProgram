@@ -5,7 +5,8 @@ import java.util.*;
 public class ContactPerson {
 	Scanner obj = new Scanner(System.in);
 	// Array list to store contact person details
-	private ArrayList<PersonInfo> person = new ArrayList<PersonInfo>();;
+	private ArrayList<PersonInfo> person = new ArrayList<PersonInfo>();
+	PersonInfo p;
 
 	public void setPerson(ArrayList<PersonInfo> person) {
 		this.person = person;
@@ -132,23 +133,25 @@ public class ContactPerson {
 		return flag;
 	}
 
-	// method to find people of same city or state
+	// method to find people of same city or state across address book
 	public String searchOnBasisOfCity(String cityName) {
-		String flag = "false";
+		String flag = " ";
 		for (int i = 0; i < person.size(); i++) {
 			PersonInfo p = (PersonInfo) person.get(i);
-			if (cityName.equals(p.getCity()))
-				flag = p.getFirst_name();
+			if (person.get(i).getCity().contains(cityName)) {
+				System.out.println(p.getFirst_name());
+			}
 		}
 		return flag;
 	}
-	
+	// method to find people of same city or state across address book
 	public String searchOnBasisOfState(String stateName) {
-		String flag = "false";
+		String flag = " ";
 		for (int i = 0; i < person.size(); i++) {
 			PersonInfo p = (PersonInfo) person.get(i);
-			if (stateName.equals(p.getState()))
-				flag = p.getFirst_name();
+			if (person.get(i).getCity().contains(stateName)) {
+				System.out.println(p.getFirst_name());
+			}
 		}
 		return flag;
 	}
