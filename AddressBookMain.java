@@ -29,6 +29,8 @@ public class AddressBookMain {
 					System.out.println("Enter 4 to delete details of a person");
 					System.out.println("Enter 5 to get persons of same city");
 					System.out.println("Enter 6 to get persons of same State");
+					System.out.println("Enter 7 to get count of person belonging to same city");
+					System.out.println("Enter 8 to get count of person belonging to same state");
 					System.out.println("Enter 0 to exit");
 					System.out.println("Enter the action to perform");
 					int ch = obj.nextInt();
@@ -59,12 +61,21 @@ public class AddressBookMain {
 						System.out.println("Enter the city name");
 						String cityName = obj.next();
 						contactPerson.viewPersonByCity(cityName);
-					}else if (ch == 6) {
+					} else if (ch == 6) {
 						System.out.println("Enter the state name");
 						String stateName = obj.next();
 						contactPerson.viewPersonByState(stateName);
-					} 
-					else {
+					} else if (ch == 7) {
+						System.out.println("Enter the city name");
+						String cityName = obj.next();
+						int count = contactPerson.countPersonByCity(cityName);
+						System.out.println("No of person in same city : " + count);
+					} else if (ch == 8) {
+						System.out.println("Enter the state name");
+						String stateName = obj.next();
+						int count = contactPerson.countPersonByState(stateName);
+						System.out.println("No 0f person in same state : " + count);
+					} else {
 						break;
 					}
 				}

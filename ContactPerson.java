@@ -189,4 +189,22 @@ public class ContactPerson {
 		for (String str : statePerson)
 			System.out.println(str);
 	}
+
+	public int countPersonByCity(String cityName) {
+		int count = 0;
+		for (int i = 0; i < person.size(); i++) {
+			if (person.get(i).getCity().contains(cityName))
+				count++;
+		}
+		return count;
+	}
+
+	public int countPersonByState(String stateName) {
+		int count = 0;
+		for (int i = 0; i < person.size(); i++) {
+			if (person.get(i).getCity().contains(stateName))
+				count++;
+		}
+		return count;
+	}
 }
