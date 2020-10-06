@@ -36,7 +36,7 @@ public class AddressBookDict {
 		System.out.println("Enter the state name");
 		String stateName = obj.next();
 		for (Map.Entry<String, ContactPerson> entry : addressBook.entrySet()) {
-			System.out.println("address book name " + entry.getKey()+" people in city "+cityName +" -");
+			System.out.println("address book name " + entry.getKey() + " people in city " + cityName + " -");
 			System.out.println(entry.getValue().searchOnBasisOfCity(cityName));
 		}
 		for (Map.Entry<String, ContactPerson> entry : addressBook.entrySet()) {

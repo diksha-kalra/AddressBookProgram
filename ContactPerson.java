@@ -144,6 +144,7 @@ public class ContactPerson {
 		}
 		return flag;
 	}
+
 	// method to find people of same city or state across address book
 	public String searchOnBasisOfState(String stateName) {
 		String flag = " ";
@@ -165,5 +166,27 @@ public class ContactPerson {
 				System.out.println("Details of " + name + " removed");
 			}
 		}
+	}
+
+	public void viewPersonByCity(String cityName) {
+		ArrayList<String> cityPerson = new ArrayList<String>();
+		for (int i = 0; i < person.size(); i++) {
+			PersonInfo p = (PersonInfo) person.get(i);
+			if (person.get(i).getCity().contains(cityName))
+				cityPerson.add(p.getFirst_name());
+		}
+		for (String str : cityPerson)
+			System.out.println(str);
+	}
+
+	public void viewPersonByState(String stateName) {
+		ArrayList<String> statePerson = new ArrayList<String>();
+		for (int i = 0; i < person.size(); i++) {
+			PersonInfo p = (PersonInfo) person.get(i);
+			if (person.get(i).getCity().contains(stateName))
+				statePerson.add(p.getFirst_name());
+		}
+		for (String str : statePerson)
+			System.out.println(str);
 	}
 }
