@@ -57,6 +57,13 @@ public class AddressBookMain {
 						break;
 					}
 				}
+
+			} else if (ch1 == 2) {
+				address.viewAddressBook();
+			} else if (ch1 == 3) {
+				address.searchAddressBookByCity();
+			} else if (ch1 == 4) {
+				address.searchAddressBookByState();
 			} else {
 				break;
 			}

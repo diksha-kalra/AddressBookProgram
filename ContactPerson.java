@@ -117,7 +117,6 @@ public class ContactPerson {
 			}
 		}
 	}
-	
 	// Method to remove contact details
 	public void remove(String name) {
 		for (int i = 0; i < person.size(); i++) {
