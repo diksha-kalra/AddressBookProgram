@@ -1,6 +1,7 @@
 package com.addressbook;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class AddressBookMain {
 
@@ -14,7 +15,8 @@ public class AddressBookMain {
 		while (true) {
 			System.out.println("Enter 1 to add addressbook");
 			System.out.println("Enter 2 to display address book");
-			System.out.println("Enter 3 to display person across address book on basis of city and state");
+			System.out.println("Enter 3 to display person across address book on basis of city");
+			System.out.println("Enter 4 to display person across address book on basis of state");
 			System.out.println("Enter 0 to exit");
 			int ch1 = obj.nextInt();
 			if (ch1 == 1) {
@@ -36,8 +38,9 @@ public class AddressBookMain {
 						while (true) {
 							System.out.println("Enter the name of person whose conatct you need to add");
 							String name = obj.next();
-							boolean flag = contactPerson.duplicateCheck(name);
-							if (flag == true) {
+							boolean flag = (contactPerson.getPerson()).stream()
+									.noneMatch(person -> person.getFirst_name().equals(name));
+							if (flag == false) {
 								System.out.println("Contact with this name exist give another name");
 								continue;
 							} else {
@@ -58,20 +61,33 @@ public class AddressBookMain {
 					} else if (ch == 5) {
 						System.out.println("Enter the city name");
 						String cityName = obj.next();
-						contactPerson.viewPersonByCity(cityName);
-					}else if (ch == 6) {
+						List<PersonInfo> personByCity = new ArrayList<PersonInfo>();
+						personByCity = (contactPerson.getPerson()).stream()
+								.filter(PersonInfo -> PersonInfo.getCity().equals(cityName))
+								.collect(Collectors.toList());
+						for (PersonInfo p : personByCity) {
+							System.out.println(p.getFirst_name());
+						}
+					} else if (ch == 6) {
 						System.out.println("Enter the state name");
 						String stateName = obj.next();
-						contactPerson.viewPersonByState(stateName);
-					} 
-					else {
+						List<PersonInfo> personByState = new ArrayList<PersonInfo>();
+						personByState = (contactPerson.getPerson()).stream()
+								.filter(PersonInfo -> PersonInfo.getState().equals(stateName))
+								.collect(Collectors.toList());
+						for (PersonInfo p : personByState) {
+							System.out.println(p.getFirst_name());
+						}
+					} else {
 						break;
 					}
 				}
 			} else if (ch1 == 2) {
 				address.viewAddressBook();
 			} else if (ch1 == 3) {
-				address.SearchAddressBook();
+				address.searchAddressBookByCity();
+			} else if (ch1 == 4) {
+				address.searchAddressBookByState();
 			} else {
 				break;
 			}
