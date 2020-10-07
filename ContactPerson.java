@@ -119,43 +119,6 @@ public class ContactPerson {
 		}
 	}
 
-	// method to check for duplicate name
-	public boolean duplicateCheck(String name) {
-		boolean flag = false;
-		for (int i = 0; i < person.size(); i++) {
-			PersonInfo p = (PersonInfo) person.get(i);
-			if (name.equals(p.getFirst_name())) {
-				flag = true;
-			} else {
-				flag = false;
-			}
-		}
-		return flag;
-	}
-
-	// method to find people of same city or state across address book
-	public String searchOnBasisOfCity(String cityName) {
-		String flag = " ";
-		for (int i = 0; i < person.size(); i++) {
-			PersonInfo p = (PersonInfo) person.get(i);
-			if (person.get(i).getCity().contains(cityName)) {
-				System.out.println(p.getFirst_name());
-			}
-		}
-		return flag;
-	}
-	// method to find people of same city or state across address book
-	public String searchOnBasisOfState(String stateName) {
-		String flag = " ";
-		for (int i = 0; i < person.size(); i++) {
-			PersonInfo p = (PersonInfo) person.get(i);
-			if (person.get(i).getCity().contains(stateName)) {
-				System.out.println(p.getFirst_name());
-			}
-		}
-		return flag;
-	}
-
 	// Method to remove contact details
 	public void remove(String name) {
 		for (int i = 0; i < person.size(); i++) {

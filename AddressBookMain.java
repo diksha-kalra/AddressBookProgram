@@ -34,8 +34,9 @@ public class AddressBookMain {
 						while (true) {
 							System.out.println("Enter the name of person whose conatct you need to add");
 							String name = obj.next();
-							boolean flag = contactPerson.duplicateCheck(name);
-							if (flag == true) {
+							boolean flag = (contactPerson.getPerson()).stream()
+									.noneMatch(person -> person.getFirst_name().equals(name));
+							if (flag == false) {
 								System.out.println("Contact with this name exist give another name");
 								continue;
 							} else {
@@ -60,7 +61,9 @@ public class AddressBookMain {
 			} else if (ch1 == 2) {
 				address.viewAddressBook();
 			} else if (ch1 == 3) {
-				address.SearchAddressBook();
+				address.searchAddressBookByCity();
+			} else if (ch1 == 4) {
+				address.searchAddressBookByState();
 			} else {
 				break;
 			}
