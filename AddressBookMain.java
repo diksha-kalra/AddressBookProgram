@@ -34,6 +34,8 @@ public class AddressBookMain {
 					System.out.println("Enter 7 to get count of person belonging to same city");
 					System.out.println("Enter 8 to get count of person belonging to same state");
 					System.out.println("Enter 9 to get sorted list of contacts by person name");
+					System.out.println("Enter 10 to get sorted list of city names");
+					System.out.println("Enter 11 to get sorted list of state names");
 					System.out.println("Enter 0 to exit");
 					System.out.println("Enter the action to perform");
 					int ch = obj.nextInt();
@@ -93,11 +95,25 @@ public class AddressBookMain {
 						Long personByState = (contactPerson.getPerson()).stream()
 								.filter(PersonInfo -> PersonInfo.getState().equals(stateName)).count();
 						System.out.println("No of person in same city : " + personByState);
-					}else if (ch == 9) {
+					} else if (ch == 9) {
 						List<String> sortedByName = new ArrayList<>();
 						sortedByName = (contactPerson.getPerson()).stream().map(PersonInfo -> PersonInfo.toString())
 								.sorted().collect(Collectors.toList());
 						for (String p : sortedByName) {
+							System.out.println(p);
+						}
+					} else if (ch == 10) {
+						List<String> sortedByCity = new ArrayList<>();
+						sortedByCity = (contactPerson.getPerson()).stream().map(PersonInfo -> PersonInfo.getCity())
+								.sorted().collect(Collectors.toList());
+						for (String p : sortedByCity) {
+							System.out.println(p);
+						}
+					} else if (ch == 11) {
+						List<String> sortedByState = new ArrayList<>();
+						sortedByState = (contactPerson.getPerson()).stream().map(PersonInfo -> PersonInfo.getState())
+								.sorted().collect(Collectors.toList());
+						for (String p : sortedByState) {
 							System.out.println(p);
 						}
 					} else {
