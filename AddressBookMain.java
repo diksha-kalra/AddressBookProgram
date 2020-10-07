@@ -57,12 +57,10 @@ public class AddressBookMain {
 						break;
 					}
 				}
-			} else if (ch1 == 2) {
-				address.viewAddressBook();
 			} else {
 				break;
 			}
 		}
-		obj.close();
+	obj.close();
 	}
 }
