@@ -23,7 +23,10 @@ public class PersonInfo {
 		this.phone_no = phone_no;
 		this.email = email;
 	}
-
+	
+	public String toString() {
+		return first_name+" "+last_name;
+	}
 	public String getFirst_name() {
 		return first_name;
 	}
