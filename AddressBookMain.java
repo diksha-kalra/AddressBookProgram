@@ -33,6 +33,7 @@ public class AddressBookMain {
 					System.out.println("Enter 6 to get persons of same State");
 					System.out.println("Enter 7 to get count of person belonging to same city");
 					System.out.println("Enter 8 to get count of person belonging to same state");
+					System.out.println("Enter 9 to get sorted list of contacts by person name");
 					System.out.println("Enter 0 to exit");
 					System.out.println("Enter the action to perform");
 					int ch = obj.nextInt();
@@ -92,7 +93,14 @@ public class AddressBookMain {
 						Long personByState = (contactPerson.getPerson()).stream()
 								.filter(PersonInfo -> PersonInfo.getState().equals(stateName)).count();
 						System.out.println("No of person in same city : " + personByState);
-					}else {
+					}else if (ch == 9) {
+						List<String> sortedByName = new ArrayList<>();
+						sortedByName = (contactPerson.getPerson()).stream().map(PersonInfo -> PersonInfo.toString())
+								.sorted().collect(Collectors.toList());
+						for (String p : sortedByName) {
+							System.out.println(p);
+						}
+					} else {
 						break;
 					}
 				}
