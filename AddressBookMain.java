@@ -29,6 +29,10 @@ public class AddressBookMain {
 					System.out.println("Enter 2 for viewing all contact details");
 					System.out.println("Enter 3 to modify details");
 					System.out.println("Enter 4 to delete details of a person");
+					System.out.println("Enter 5 to get persons of same city");
+					System.out.println("Enter 6 to get persons of same State");
+					System.out.println("Enter 7 to get count of person belonging to same city");
+					System.out.println("Enter 8 to get count of person belonging to same state");
 					System.out.println("Enter 0 to exit");
 					System.out.println("Enter the action to perform");
 					int ch = obj.nextInt();
@@ -56,7 +60,7 @@ public class AddressBookMain {
 						System.out.println("Enter the name of person whose contact is to be deleted");
 						String name = obj.next();
 						contactPerson.remove(name);
-			} else if (ch == 5) {
+					} else if (ch == 5) {
 						System.out.println("Enter the city name");
 						String cityName = obj.next();
 						List<PersonInfo> personByCity = new ArrayList<PersonInfo>();
@@ -76,11 +80,22 @@ public class AddressBookMain {
 						for (PersonInfo p : personByState) {
 							System.out.println(p.getFirst_name());
 						}
-					} else {
+					} else if (ch == 7) {
+						System.out.println("Enter the city name");
+						String cityName = obj.next();
+						Long personByCity = (contactPerson.getPerson()).stream()
+								.filter(PersonInfo -> PersonInfo.getCity().equals(cityName)).count();
+						System.out.println("No of person in same city : " + personByCity);
+					} else if (ch == 8) {
+						System.out.println("Enter the state name");
+						String stateName = obj.next();
+						Long personByState = (contactPerson.getPerson()).stream()
+								.filter(PersonInfo -> PersonInfo.getState().equals(stateName)).count();
+						System.out.println("No of person in same city : " + personByState);
+					}else {
 						break;
 					}
 				}
-
 			} else if (ch1 == 2) {
 				address.viewAddressBook();
 			} else if (ch1 == 3) {
@@ -91,6 +106,6 @@ public class AddressBookMain {
 				break;
 			}
 		}
-	obj.close();
+		obj.close();
 	}
 }
