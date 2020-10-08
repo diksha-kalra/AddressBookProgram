@@ -34,8 +34,9 @@ public class AddressBookMain {
 					System.out.println("Enter 7 to get count of person belonging to same city");
 					System.out.println("Enter 8 to get count of person belonging to same state");
 					System.out.println("Enter 9 to get sorted list of contacts by person name");
-					System.out.println("Enter 10 to get sorted list of city names");
-					System.out.println("Enter 11 to get sorted list of state names");
+					System.out.println("Enter 10 to get sorted list by city names");
+					System.out.println("Enter 11 to get sorted list by state names");
+					System.out.println("Enter 12 to get sorted list by zip codes");
 					System.out.println("Enter 0 to exit");
 					System.out.println("Enter the action to perform");
 					int ch = obj.nextInt();
@@ -96,24 +97,36 @@ public class AddressBookMain {
 								.filter(PersonInfo -> PersonInfo.getState().equals(stateName)).count();
 						System.out.println("No of person in same city : " + personByState);
 					} else if (ch == 9) {
-						List<String> sortedByName = new ArrayList<>();
-						sortedByName = (contactPerson.getPerson()).stream().map(PersonInfo -> PersonInfo.toString())
-								.sorted().collect(Collectors.toList());
-						for (String p : sortedByName) {
+						List<PersonInfo> sortedByName = new ArrayList<PersonInfo>();
+						contactPerson.getPerson().stream()
+								.sorted((con1, con2) -> (con1.getFirst_name() + con1.getLast_name())
+										.compareTo(con2.getFirst_name() + con2.getLast_name()))
+								.forEach(con -> sortedByName.add(con));
+						for (PersonInfo p : sortedByName) {
 							System.out.println(p);
 						}
 					} else if (ch == 10) {
-						List<String> sortedByCity = new ArrayList<>();
-						sortedByCity = (contactPerson.getPerson()).stream().map(PersonInfo -> PersonInfo.getCity())
-								.sorted().collect(Collectors.toList());
-						for (String p : sortedByCity) {
+						List<PersonInfo> sortedByCity = new ArrayList<PersonInfo>();
+						contactPerson.getPerson().stream()
+								.sorted((con1, con2) -> (con1.getCity().compareTo(con2.getCity())))
+								.forEach(con -> sortedByCity.add(con));
+						for (PersonInfo p : sortedByCity) {
 							System.out.println(p);
 						}
 					} else if (ch == 11) {
-						List<String> sortedByState = new ArrayList<>();
-						sortedByState = (contactPerson.getPerson()).stream().map(PersonInfo -> PersonInfo.getState())
-								.sorted().collect(Collectors.toList());
-						for (String p : sortedByState) {
+						List<PersonInfo> sortedByState = new ArrayList<PersonInfo>();
+						contactPerson.getPerson().stream()
+								.sorted((con1, con2) -> con1.getState().compareTo(con2.getState()))
+								.forEach(con -> sortedByState.add(con));
+						for (PersonInfo p : sortedByState) {
+							System.out.println(p);
+						}
+					} else if (ch == 12) {
+						List<PersonInfo> sortedByZip = new ArrayList<PersonInfo>();
+						contactPerson.getPerson().stream()
+								.sorted((con1, con2) -> con1.getZip().compareTo(con2.getZip()))
+								.forEach(con -> sortedByZip.add(con));
+						for (PersonInfo p : sortedByZip) {
 							System.out.println(p);
 						}
 					} else {

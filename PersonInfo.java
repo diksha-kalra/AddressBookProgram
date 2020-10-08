@@ -26,6 +26,7 @@ public class PersonInfo {
 	public String toString() {
 		return first_name+" "+last_name;
 	}
+	
 	public String getFirst_name() {
 		return first_name;
 	}
