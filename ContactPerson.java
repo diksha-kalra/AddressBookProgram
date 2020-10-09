@@ -7,7 +7,6 @@ import java.util.stream.Collectors;
 
 public class ContactPerson {
 	Scanner obj = new Scanner(System.in);
-	
 	// Array list to store contact person details
 	private ArrayList<PersonInfo> person = new ArrayList<PersonInfo>();
 
@@ -172,28 +171,25 @@ public class ContactPerson {
 		}
 	}
 
-	// method to get person entries by name
-	public void getPersonByCityName(AddressBookDict addressBook) {
+	// method to get person entries by city or state
+	public void getPersonByCityNameStateName(AddressBookDict addressBook) {
 		System.out.println("Enter the address book name whose contacts you want to see by city name");
 		String addressBookName = obj.next();
 		List<PersonInfo> ContactList = addressBook.getContactList(addressBookName);
-		Map<String, List<PersonInfo>> personByCity = (ContactList.stream()
-				.collect(Collectors.groupingBy(PersonInfo::getCity, Collectors.toList())));
-		personByCity.entrySet().forEach(entry -> System.out.println(entry.getKey() + " " + entry.getValue()));
-		if (personByCity.isEmpty()) {
-			System.out.println("Add contacts to get person by cities");
+		System.out.println("Choice \n 1. get person by city name 2. get person by state name");
+		int choice = obj.nextInt();
+		Map<String, List<PersonInfo>> personList = new HashMap<String, List<PersonInfo>>();
+		if (choice == 1) {
+			personList = (ContactList.stream()
+					.collect(Collectors.groupingBy(PersonInfo::getCity, Collectors.toList())));
+			personList.entrySet().forEach(entry -> System.out.println(entry.getKey() + " " + entry.getValue()));
 		}
-	}
-
-	// method to get person entries by state name
-	public void getPersonByStateName(AddressBookDict addressBook) {
-		System.out.println("Enter the address book name whose contacts you want to see by state name");
-		String addressBookName = obj.next();
-		List<PersonInfo> ContactList = addressBook.getContactList(addressBookName);
-		Map<String, List<PersonInfo>> personByState = (ContactList.stream()
-				.collect(Collectors.groupingBy(PersonInfo::getState, Collectors.toList())));
-		personByState.entrySet().forEach(entry -> System.out.println(entry.getKey() + " " + entry.getValue()));
-		if (personByState.isEmpty()) {
+		if (choice == 2) {
+			personList = (ContactList.stream()
+					.collect(Collectors.groupingBy(PersonInfo::getState, Collectors.toList())));
+			personList.entrySet().forEach(entry -> System.out.println(entry.getKey() + " " + entry.getValue()));
+		}
+		if (personList.isEmpty()) {
 			System.out.println("Add contacts to get person by cities");
 		}
 	}
@@ -214,56 +210,37 @@ public class ContactPerson {
 		}
 	}
 
-	// method to sort person entries by city
-	public void sortByCity(AddressBookDict addressBook) {
-		System.out.println("Enter the address book name whose contacts you want to see in sorted order by city");
+	// method to sort person entries by city or state or zip code
+	public void sortByCityStateOrZip(AddressBookDict addressBook) {
+		System.out.println(
+				"Enter the address book name whose contacts you want to see in sorted order by city or state or zip");
 		String addressBookName = obj.next();
 		List<PersonInfo> ContactList = addressBook.getContactList(addressBookName);
 		if (ContactList.isEmpty()) {
 			System.out.println("Empty list");
 		}
-		List<PersonInfo> sortedByCity = new ArrayList<PersonInfo>();
-		ContactList.stream().sorted((con1, con2) -> (con1.getCity().compareTo(con2.getCity())))
-				.forEach(con -> sortedByCity.add(con));
-		for (PersonInfo p : sortedByCity) {
+		System.out.println("choice \n 1. sort by city \n 2. sort by state \n 3. sort by zip");
+		int choice = obj.nextInt();
+		List<PersonInfo> sortedList = new ArrayList<PersonInfo>();
+		if (choice == 1) {
+			ContactList.stream().sorted((con1, con2) -> (con1.getCity().compareTo(con2.getCity())))
+					.forEach(con -> sortedList.add(con));
+		}
+		if (choice == 2) {
+			ContactList.stream().sorted((con1, con2) -> (con1.getState().compareTo(con2.getState())))
+					.forEach(con -> sortedList.add(con));
+		}
+		if (choice == 3) {
+			ContactList.stream().sorted((con1, con2) -> (con1.getZip().compareTo(con2.getZip())))
+					.forEach(con -> sortedList.add(con));
+		}
+		for (PersonInfo p : sortedList) {
 			System.out.println(p);
 		}
 	}
 
-	// method to sort person entries by State
-	public void sortByState(AddressBookDict addressBook) {
-		System.out.println("Enter the address book name whose contacts you want to see in sorted order by state");
-		String addressBookName = obj.next();
-		List<PersonInfo> ContactList = addressBook.getContactList(addressBookName);
-		if (ContactList.isEmpty()) {
-			System.out.println("Empty list");
-		}
-		List<PersonInfo> sortedByState = new ArrayList<PersonInfo>();
-		ContactList.stream().sorted((con1, con2) -> con1.getState().compareTo(con2.getState()))
-				.forEach(con -> sortedByState.add(con));
-		for (PersonInfo p : sortedByState) {
-			System.out.println(p);
-		}
-	}
-
-	// method to sort person entries by Zip Code
-	public void sortByZip(AddressBookDict addressBook) {
-		System.out.println("Enter the address book name whose contacts you want to see in sorted order  by zip code");
-		String addressBookName = obj.next();
-		List<PersonInfo> ContactList = addressBook.getContactList(addressBookName);
-		if (ContactList.isEmpty()) {
-			System.out.println("Empty list");
-		}
-		List<PersonInfo> sortedByZip = new ArrayList<PersonInfo>();
-		ContactList.stream().sorted((con1, con2) -> con1.getZip().compareTo(con2.getZip()))
-				.forEach(con -> sortedByZip.add(con));
-		for (PersonInfo p : sortedByZip) {
-			System.out.println(p);
-		}
-	}
-
-	// method to count entries by city name
-	public void getCountByCity(AddressBookDict addressBook) {
+// method to count entries by city name or state name
+	public void getCountByCityByState(AddressBookDict addressBook) {
 		System.out.println("Enter the address book name whose contacts you want to see in sorted order  by zip code");
 		String addressBookName = obj.next();
 		List<PersonInfo> ContactList = addressBook.getContactList(addressBookName);
@@ -271,16 +248,9 @@ public class ContactPerson {
 		String cityName = obj.next();
 		Long personByCity = ContactList.stream().filter(PersonInfo -> PersonInfo.getCity().equals(cityName)).count();
 		System.out.println("No of person in same city : " + personByCity);
-	}
-
-	// method to count entries by state name
-	public void getCountByState(AddressBookDict addressBook) {
-		System.out.println("Enter the address book name whose contacts you want to see in sorted order  by zip code");
-		String addressBookName = obj.next();
-		List<PersonInfo> ContactList = addressBook.getContactList(addressBookName);
-		System.out.println("Enter the city name");
-		String cityName = obj.next();
-		Long personByState = ContactList.stream().filter(PersonInfo -> PersonInfo.getState().equals(cityName)).count();
-		System.out.println("No of person in same city : " + personByState);
+		System.out.println("Enter the state name");
+		String stateName = obj.next();
+		Long personByState = ContactList.stream().filter(PersonInfo -> PersonInfo.getState().equals(stateName)).count();
+		System.out.println("No of person in same state : " + personByState);
 	}
 }
