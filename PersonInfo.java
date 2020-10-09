@@ -23,10 +23,16 @@ public class PersonInfo {
 		this.phone_no = phone_no;
 		this.email = email;
 	}
-	public String toString() {
-		return first_name+" "+last_name;
+
+	public PersonInfo() {
 	}
-	
+
+	public String toString() {
+		return "First Name: " + this.first_name + " Last Name: " + this.last_name + " Address: " + this.address
+				+ " City: " + this.city + " State: " + this.state + " Zip: " + this.zip + " Phone Number: "
+				+ this.phone_no + " Email: " + this.email;
+	}
+
 	public String getFirst_name() {
 		return first_name;
 	}
