@@ -1,17 +1,16 @@
 package com.addressbook;
-
 import java.util.*;
 
 public class AddressBookMain {
 
-	public static void main(String[] args) {
+	public static void main(String[] args){
 
 		// Printing welcome message
 		System.out.println("Welcome To Address Book Program");
-
+		ArrayList<PersonInfo> addPerson=new ArrayList<>();
 		Scanner obj = new Scanner(System.in);
 		AddressBookDict address = new AddressBookDict();
-		ContactPerson contactPerson = new ContactPerson();
+		ContactPerson contactPerson = new ContactPerson(addPerson);
 		boolean flag = true;
 		while (flag == true) {
 			System.out.println("Enter 1 to add addressbook");

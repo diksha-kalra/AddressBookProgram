@@ -5,7 +5,6 @@ import java.util.Map.Entry;
 import java.util.stream.Collectors;
 
 public class AddressBookDict {
-
 	Scanner obj = new Scanner(System.in);
 
 	private TreeMap<String, ArrayList<PersonInfo>> addressBook = new TreeMap<String, ArrayList<PersonInfo>>();

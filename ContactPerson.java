@@ -1,14 +1,27 @@
 package com.addressbook;
 
+import java.io.IOException;
 import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 public class ContactPerson {
+	public enum IOService {
+		CONSOLE_IO, FILE_IO, DB_IO, REST_IO
+	}
+
 	Scanner obj = new Scanner(System.in);
 	// Array list to store contact person details
-	private ArrayList<PersonInfo> person = new ArrayList<PersonInfo>();
+	private ArrayList<PersonInfo> person;
+
+	public ContactPerson() {
+
+	}
+
+	public ContactPerson(ArrayList<PersonInfo> person) {
+		this.person = person;
+	}
 
 	public void setPerson(ArrayList<PersonInfo> person) {
 		this.person = person;
@@ -79,6 +92,14 @@ public class ContactPerson {
 		}
 		p = new PersonInfo(fname, lname, address, city, state, zipCode, phoneNo, email);
 		return p;
+	}
+
+	public void writeAddressBookData(IOService ioService) throws IOException {
+		if (ioService.equals(IOService.CONSOLE_IO))
+			System.out.println("Contact Person Data " + person);
+		else if (ioService.equals(IOService.FILE_IO)) {
+			new AddressBookFileIO().writeData(person);
+		}
 	}
 
 	// Method to check if list is empty
@@ -252,5 +273,12 @@ public class ContactPerson {
 		String stateName = obj.next();
 		Long personByState = ContactList.stream().filter(PersonInfo -> PersonInfo.getState().equals(stateName)).count();
 		System.out.println("No of person in same state : " + personByState);
+	}
+
+	public static List<PersonInfo> readPersonData(IOService fileIo) {
+		List<PersonInfo> personInfo = null;
+		if (fileIo.equals(IOService.FILE_IO))
+			personInfo = (List<PersonInfo>) new AddressBookFileIO().readData();
+		return personInfo;
 	}
 }
