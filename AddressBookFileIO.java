@@ -10,7 +10,7 @@ import java.util.List;
 public class AddressBookFileIO {
 	public static String ADDRESS_BOOK = "address-book-file.txt";
 
-	public void writeData(ArrayList<PersonInfo> person) throws IOException {
+	public void writeDataFileIO(ArrayList<PersonInfo> person) throws IOException {
 		StringBuffer empBuffer = new StringBuffer();
 		person.forEach(personInBook -> {
 			String personDataString = personInBook.toString().concat("\n");

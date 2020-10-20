@@ -9,7 +9,7 @@ import com.addressbook.ContactPerson.IOService;
 public class AddressBookTest {
 
 	@Test
-	public void givenAddressBookWhenWrittenToFileShouldMatchEnteries() throws IOException {
+	public void givenAddressBookWhenWrittenToFileShouldMatchEnteries() throws IOException{
 		ArrayList<PersonInfo> person = new ArrayList<>();
 		person.add(new PersonInfo("diksha", "kalra", "Kalkaji", "Delhi", "Delhi", "110019", "9899151876",
 				"kalradiksha109@gmail.com"));
